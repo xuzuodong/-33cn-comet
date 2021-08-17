@@ -11,7 +11,7 @@ it('can be connected', () => {
         .then((conn) => expect(conn.readyState).toEqual(1))
 })
 
-it('throws error when passing invalid authorization', () => {
+it('throws error when passed into invalid authorization', () => {
     const comet = new Comet('ws://172.16.101.107:8888/sub')
     expect.assertions(1)
     return comet
@@ -19,5 +19,5 @@ it('throws error when passing invalid authorization', () => {
             appId: 'dtalk',
             token: 'random_invalid_token',
         })
-        .catch((reason) => expect(reason).toBeInstanceOf(Number))
+        .catch((reason) => expect(reason).toBeInstanceOf(Error))
 })
